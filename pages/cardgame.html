@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='UTF-8'>
+  <title>Poker Game</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      min-height: 110vh;
+    }
+
+    .player {
+      width: 100%;
+      height: 100%;
+    }
+
+    .flip-card {
+
+      background-color: transparent;
+      margin: 1em;
+      width: 10rem;
+      height: 15rem;
+
+    }
+
+    /* This container is needed to position the front and back side */
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+
+    }
+
+    /* Position the front and back side */
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 0.5em;
+
+    }
+
+    .flip-card-front:hover {
+      background-color: #07ca89;
+
+    }
+
+    /* Style the front side (fallback if image is missing) */
+    .flip-card-front {
+      background-color: dodgerblue;
+      color: black;
+      background-image: url('../src/resources/images/card-front.jpg');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+
+    }
+
+    /* Style the back side */
+    .flip-card-back {
+      background-color: #000000;
+      background-image: url('../src/resources/images/spade/ACE.svg');
+      background-size: 100%;
+      color: white;
+      transform: rotateY(180deg);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .card-container {
+      display: flex;
+      align-items: top;
+      justify-content: center;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .invisible {
+      display: none;
+    }
+
+    .vertical {
+      border-left: 4px solid rgb(255, 0, 0);
+      height: 80vh;
+      position: relative;
+    }
+
+    button {
+      padding: 0.5em 1em;
+      border-radius: 0.5em;
+    }
+    #winner-btn{
+      position: absolute;
+      top: 80%;
+    }
+
+    .win-popup {
+      position: absolute;
+      height: 90vmax;
+      transition: all 6000ms ease-out;
+      transform: translateY(-100%);
+    }
+
+    .win-animate {
+      transform: translateY(100%);
+    }
+
+    #win-popup-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      z-index: -999;
+    }
+
+    .popup {
+      width: 50%;
+      border: 2px solid beige;
+      background-color: #CFF4FC;
+      margin: 10% auto;
+      padding: 2rem;
+      text-align: center;
+      border-radius: 1rem;
+    }
+
+    .popup-para {
+      margin: 1.75em;
+      font-size: 1.25rem;
+    }
+
+    .popup-container {
+      z-index: 99;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: none;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class='card-container'>
+
+    <div class='player'>
+      <div class='container'>
+        <h2>Player 1: Ramesh</h2>
+      </div>
+      <div class='card-container'>
+        <div class='flip-card'>
+          <div class='flip-card-inner'>
+            <div class='flip-card-front' onclick='flipP1(this)'>
+            </div>
+            <div class='flip-card-back' id='card-p1-1'>
+            </div>
+          </div>
+        </div>
+        <div class='flip-card'>
+          <div class='flip-card-inner'>
+            <div class='flip-card-front' onclick='flipP1(this)'>
+            </div>
+            <div class='flip-card-back' id='card-p1-2'>
+            </div>
+          </div>
+        </div>
+        <div class='flip-card'>
+          <div class='flip-card-inner'>
+            <div class='flip-card-front' onclick='flipP1(this)'>
+            </div>
+            <div class='flip-card-back' id='card-p1-3'>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class='container'>
+        <button id='p1-highest-btn' disabled onclick='showHighestP1()'>Show Highest Card</button>
+      </div>
+      <div class='card-container invisible' id='p1-highest-card'>
+        <div class='flip-card'>
+          <div class='flip-card-inner'>
+            <div class='flip-card-front' id='card-p1-H'>
+            </div>
+            <div class='flip-card-back'>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class='vertical'></div>
+
+    <div class='player'>
+      <div class='container'>
+        <h2>Player 2: Suresh</h2>
+      </div>
+      <div class='card-container'>
+        <div class='flip-card'>
+          <div class='flip-card-inner'>
+            <div class='flip-card-front' onclick='flipP2(this)'>
+            </div>
+            <div class='flip-card-back' id='card-p2-1'>
+            </div>
+          </div>
+        </div>
+        <div class='flip-card'>
+          <div class='flip-card-inner'>
+            <div class='flip-card-front' onclick='flipP2(this)'>
+            </div>
+            <div class='flip-card-back' id='card-p2-2'>
+            </div>
+          </div>
+        </div>
+        <div class='flip-card'>
+          <div class='flip-card-inner'>
+            <div class='flip-card-front' onclick='flipP2(this)'>
+            </div>
+            <div class='flip-card-back' id='card-p2-3'>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class='container'>
+        <button id='p2-highest-btn' disabled onclick='showHighestP2()'>Show Highest Card</button>
+      </div>
+
+      <div class='card-container invisible' id='p2-highest-card'>
+        <div class='flip-card'>
+          <div class='flip-card-inner'>
+            <div class='flip-card-front' id='card-p2-H'>
+            </div>
+            <div class='flip-card-back'>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class='container'>
+    <button id='winner-btn' disabled onclick='showWinner()'>Decide Winner</button>
+  </div>
+
+  <div id='win-popup-container'>
+    <img class='win-popup' src='../src/resources/images/congrats.svg' alt='' srcset=''>
+  </div>
+
+  <div class='popup-container'>
+
+    <div class='popup'>
+      <h2>Congratulations Suresh !!! You have won the Game </h2>
+      <p class='popup-para'>Congratulations Suresh on winning the Poker Game with score of 51. Hope you enjoyed and had a great time
+        playing.</p>
+    </div>
+  </div>
+
+</body>
+<script>
+  var p1Counter = 0;
+  let p1HighestBtn = document.getElementById('p1-highest-btn');
+  let p1HighestCard = document.getElementById('p1-highest-card');
+
+  var p2Counter = 0;
+  let p2HighestBtn = document.getElementById('p2-highest-btn');
+  let p2HighestCard = document.getElementById('p2-highest-card');
+
+  var isGameOver = false;
+
+
+  function flipP1(e) {
+    e.parentElement.style.transform = 'rotateY(180deg)';
+    p1Counter++;
+    if (p1Counter === 3)
+      p1HighestBtn.disabled = false;
+  };
+
+  function flipP2(e) {
+    e.parentElement.style.transform = 'rotateY(180deg)';
+    p2Counter++;
+    if (p2Counter === 3)
+      p2HighestBtn.disabled = false;
+  };
+
+  function showHighestP1() {
+    p1HighestCard.classList.remove('invisible');
+    if (isGameOver)
+      document.getElementById('winner-btn').disabled = false;
+    else isGameOver = true;
+
+  }
+
+  function showHighestP2() {
+    p2HighestCard.classList.remove('invisible');
+    if (isGameOver)
+      document.getElementById('winner-btn').disabled = false;
+    else isGameOver = true;
+  }
+
+  function showWinner() {
+    let popup=document.querySelector('.popup-container');
+    popup.style.display = 'block';
+    document.querySelector('.win-popup').classList.add('win-animate');
+    document.querySelector('.win-popup-container').style.zIndex='999';
+    popup.style.zIndex='999';
+  }
+
+  function setimages() {
+    document.getElementById('card-p1-1').style.backgroundImage = `url('../src/resources/images/SPADE/TWO.svg')`;
+    document.getElementById('card-p1-2').style.backgroundImage = `url('../src/resources/images/DIAMOND/SEVEN.svg')`;
+    document.getElementById('card-p1-3').style.backgroundImage = `url('../src/resources/images/CLUB/NINE.svg')`;
+    document.getElementById('card-p1-H').style.backgroundImage = `url('../src/resources/images/CLUB/NINE.svg')`;
+    document.getElementById('card-p2-1').style.backgroundImage = `url('../src/resources/images/SPADE/ACE.svg')`;
+    document.getElementById('card-p2-2').style.backgroundImage = `url('../src/resources/images/SPADE/SIX.svg')`;
+    document.getElementById('card-p2-3').style.backgroundImage = `url('../src/resources/images/SPADE/QUEEN.svg')`;
+    document.getElementById('card-p2-H').style.backgroundImage = `url('../src/resources/images/SPADE/ACE.svg')`;
+  }
+  setimages();
+</script>
+
+</html>
