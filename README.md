@@ -5,4 +5,4 @@
 Run the JAVA code from TestClient.java present in src/com/psl/gems/client. This will create cardgame.html file. Now, open the cardgame.html file in browser and play.
 
 ## Note:
-You can open the link given in description for demo. 
+You can open the link given in about section for demo.
