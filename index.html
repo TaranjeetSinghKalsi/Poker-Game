@@ -60,7 +60,7 @@
     .flip-card-front {
       background-color: dodgerblue;
       color: black;
-      background-image: url('../src/resources/images/card-front.jpg');
+      background-image: url('src/resources/images/card-front.jpg');
       background-size: 100%;
       background-repeat: no-repeat;
       background-position: center;
@@ -70,7 +70,7 @@
     /* Style the back side */
     .flip-card-back {
       background-color: #000000;
-      background-image: url('../src/resources/images/spade/ACE.svg');
+      background-image: url('src/resources/images/spade/ACE.svg');
       background-size: 100%;
       color: white;
       transform: rotateY(180deg);
@@ -270,7 +270,7 @@
   </div>
 
   <div id='win-popup-container'>
-    <img class='win-popup' src='../src/resources/images/congrats.svg' alt='' srcset=''>
+    <img class='win-popup' src='src/resources/images/congrats.svg' alt='' srcset=''>
   </div>
 
   <div class='popup-container'>
@@ -333,14 +333,14 @@
   }
 
   function setimages() {
-    document.getElementById('card-p1-1').style.backgroundImage = `url('../src/resources/images/SPADE/TWO.svg')`;
-    document.getElementById('card-p1-2').style.backgroundImage = `url('../src/resources/images/DIAMOND/SEVEN.svg')`;
-    document.getElementById('card-p1-3').style.backgroundImage = `url('../src/resources/images/CLUB/NINE.svg')`;
-    document.getElementById('card-p1-H').style.backgroundImage = `url('../src/resources/images/CLUB/NINE.svg')`;
-    document.getElementById('card-p2-1').style.backgroundImage = `url('../src/resources/images/SPADE/ACE.svg')`;
-    document.getElementById('card-p2-2').style.backgroundImage = `url('../src/resources/images/SPADE/SIX.svg')`;
-    document.getElementById('card-p2-3').style.backgroundImage = `url('../src/resources/images/SPADE/QUEEN.svg')`;
-    document.getElementById('card-p2-H').style.backgroundImage = `url('../src/resources/images/SPADE/ACE.svg')`;
+    document.getElementById('card-p1-1').style.backgroundImage = `url('src/resources/images/SPADE/TWO.svg')`;
+    document.getElementById('card-p1-2').style.backgroundImage = `url('src/resources/images/DIAMOND/SEVEN.svg')`;
+    document.getElementById('card-p1-3').style.backgroundImage = `url('src/resources/images/CLUB/NINE.svg')`;
+    document.getElementById('card-p1-H').style.backgroundImage = `url('src/resources/images/CLUB/NINE.svg')`;
+    document.getElementById('card-p2-1').style.backgroundImage = `url('src/resources/images/SPADE/ACE.svg')`;
+    document.getElementById('card-p2-2').style.backgroundImage = `url('src/resources/images/SPADE/SIX.svg')`;
+    document.getElementById('card-p2-3').style.backgroundImage = `url('src/resources/images/SPADE/QUEEN.svg')`;
+    document.getElementById('card-p2-H').style.backgroundImage = `url('src/resources/images/SPADE/ACE.svg')`;
   }
   setimages();
 </script>
