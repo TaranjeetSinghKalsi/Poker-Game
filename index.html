@@ -10,7 +10,8 @@
       padding: 0;
       box-sizing: border-box;
     }
-    body{
+
+    body {
       min-height: 110vh;
     }
 
@@ -107,7 +108,8 @@
       padding: 0.5em 1em;
       border-radius: 0.5em;
     }
-    #winner-btn{
+
+    #winner-btn {
       position: absolute;
       top: 80%;
     }
@@ -161,17 +163,24 @@
     }
 
     @media (max-width:1150px) {
-      .hero{
-    align-items: center;
-    flex-direction: column;
+      .hero {
+        align-items: center;
+        flex-direction: column;
       }
-      .vertical{
+
+      .vertical {
         border-top: 4px solid rgb(255, 0, 0);
         border-left: none;
         height: 0;
         width: 80vw;
       }
-      
+
+      .flip-card {
+        /* x1.7 */
+        width: 17rem;
+        height: 25.5rem;
+      }
+
     }
   </style>
 </head>
@@ -292,7 +301,8 @@
 
     <div class='popup'>
       <h2>Congratulations Suresh !!! You have won the Game </h2>
-      <p class='popup-para'>Congratulations Suresh on winning the Poker Game with score of 51. Hope you enjoyed and had a great time
+      <p class='popup-para'>Congratulations Suresh on winning the Poker Game with score of 51. Hope you enjoyed and had
+        a great time
         playing.</p>
     </div>
   </div>
@@ -340,11 +350,11 @@
   }
 
   function showWinner() {
-    let popup=document.querySelector('.popup-container');
+    let popup = document.querySelector('.popup-container');
     popup.style.display = 'block';
     document.querySelector('.win-popup').classList.add('win-animate');
-    document.getElementById('win-popup-container').style.zIndex='999';
-    popup.style.zIndex='999';
+    document.getElementById('win-popup-container').style.zIndex = '999';
+    popup.style.zIndex = '999';
   }
 
   function setimages() {
