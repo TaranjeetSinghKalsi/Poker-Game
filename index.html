@@ -26,7 +26,6 @@
       margin: 1em;
       width: 10rem;
       height: 15rem;
-
     }
 
     /* This container is needed to position the front and back side */
@@ -37,7 +36,6 @@
       text-align: center;
       transition: transform 0.8s;
       transform-style: preserve-3d;
-
     }
 
     /* Position the front and back side */
@@ -49,12 +47,10 @@
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       border-radius: 0.5em;
-
     }
 
     .flip-card-front:hover {
       background-color: #07ca89;
-
     }
 
     /* Style the front side (fallback if image is missing) */
@@ -90,7 +86,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
+      padding: 1em;
     }
 
     .invisible {
@@ -144,11 +140,11 @@
       margin: 10% auto;
       padding: 2rem;
       text-align: center;
-      border-radius: 1rem;
+      border-radius: 1em;
     }
 
     .popup-para {
-      margin: 1.75em;
+      margin: 1.75rem;
       font-size: 1.25rem;
     }
 
@@ -163,7 +159,16 @@
     }
 
     @media (max-width:1150px) {
+      h2 {
+        font-size: 3rem;
+      }
+
+      button {
+        font-size: 2rem;
+      }
+
       .hero {
+        /* margin: 0; */
         align-items: center;
         flex-direction: column;
       }
@@ -179,6 +184,11 @@
         /* x1.7 */
         width: 17rem;
         height: 25.5rem;
+      }
+
+      #winner-btn {
+        position: relative;
+        /* top: 80%; */
       }
 
     }
