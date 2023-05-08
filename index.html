@@ -93,7 +93,8 @@
     }
 
     .invisible {
-      display: none;
+      /* display: none; */
+      visibility: hidden;
     }
 
     .vertical {
@@ -158,12 +159,26 @@
       top: 0;
       left: 0;
     }
+
+    @media (max-width:1150px) {
+      .hero{
+    align-items: center;
+    flex-direction: column;
+      }
+      .vertical{
+        border-top: 4px solid rgb(255, 0, 0);
+        border-left: none;
+        height: 0;
+        width: 80vw;
+      }
+      
+    }
   </style>
 </head>
 
 <body>
 
-  <div class='card-container'>
+  <div class='card-container hero'>
 
     <div class='player'>
       <div class='container'>
@@ -328,7 +343,7 @@
     let popup=document.querySelector('.popup-container');
     popup.style.display = 'block';
     document.querySelector('.win-popup').classList.add('win-animate');
-    document.querySelector('.win-popup-container').style.zIndex='999';
+    document.getElementById('win-popup-container').style.zIndex='999';
     popup.style.zIndex='999';
   }
 
