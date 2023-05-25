@@ -6,3 +6,8 @@ Run the JAVA code from TestClient.java present in src/com/psl/gems/client. This 
 
 ## Note:
 You can open the link given in about section for demo.
+
+# Technologies Used
+- JAVA
+- JavaScript
+- HTML and CSS
